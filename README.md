@@ -5,4 +5,4 @@ framework.
 Available versions:
 
 * [3.3.6 (CUDA 11.8)](3.3.6_cuda11.8)
-
+* [3.3.6 (CPU)](3.3.6_cpu)
