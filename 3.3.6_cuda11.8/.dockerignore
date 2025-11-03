@@ -1,0 +1,8 @@
+*~
+*.swp
+test/
+output/
+data/
+predictions/
+models/
+
