@@ -2,7 +2,7 @@
 
 Uses [PaddleX](https://github.com/PaddlePaddle/PaddleX) ([documentation](https://paddlepaddle.github.io/PaddleX/3.3/en/index.html)). 
 
-Uses CUDA 11.8 and PaddleX 3.3.6.
+Uses CUDA 11.8, PyTorch 2.3.1 and PaddleX 3.3.6.
 
 ## Quick start
 
@@ -130,12 +130,4 @@ to download them constantly, you can the cache directory to the host machine:
   ```bash
   -v /some/where/cache:/.paddlex \
   ```
-
-
-## Scripts
-
-The following additional scripts are available:
-
-* `TODO` - ...
-
 

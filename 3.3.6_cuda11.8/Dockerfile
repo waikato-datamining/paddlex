@@ -1,6 +1,6 @@
-ARG PYTORCH="2.7.0"
+ARG PYTORCH="2.3.1"
 ARG CUDA="11.8"
-ARG CUDNN="9"
+ARG CUDNN="8"
 
 ARG DOCKER_REGISTRY=public.aml-repo.cms.waikato.ac.nz:443/
 FROM ${DOCKER_REGISTRY}pytorch/pytorch:${PYTORCH}-cuda${CUDA}-cudnn${CUDNN}-devel
@@ -35,10 +35,3 @@ RUN git clone https://github.com/PaddlePaddle/PaddleX.git && \
 
 COPY bash.bashrc /etc/bash.bashrc
 
-# paddlepaddle-gpu looks for: /usr/local/cuda/lib64/libcudnn.so
-#RUN ln -s /opt/conda/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9 /usr/local/cuda/lib64/libcudnn.so
-
-ENV CUDA_HOME=/usr/local/cuda-11.8
-ENV PATH=/usr/local/cuda-11.8/bin:$PATH
-ENV LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:/opt/conda/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH
-ENV PYTHONPATH=/opt/PaddleX
