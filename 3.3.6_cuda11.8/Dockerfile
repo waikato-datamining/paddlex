@@ -31,7 +31,7 @@ RUN git clone https://github.com/PaddlePaddle/PaddleX.git && \
     cd PaddleX && \
     git reset --hard 802629c2f7efd500d782139943714974edfa92b9 && \
     rm -Rf .git && \
-    pip install --no-cache-dir "paddlex[base]" .
+    pip install --no-cache-dir -e ".[base]"
 
 COPY bash.bashrc /etc/bash.bashrc
 

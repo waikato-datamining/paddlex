@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y git ninja-build libglib2.0-0 libsm6 lib
     && rm -rf /var/lib/apt/lists/*
 
 # Install torch
-RUN pip install --no-cache-dir torch==2.7.0 torchvision \
+RUN pip install --no-cache-dir torch==2.3.1 torchvision \
     --index-url  https://download.pytorch.org/whl/cpu
 
 # see instructions for specific cuda version
@@ -31,7 +31,7 @@ RUN git clone https://github.com/PaddlePaddle/PaddleX.git && \
     cd PaddleX && \
     git reset --hard 802629c2f7efd500d782139943714974edfa92b9 && \
     rm -Rf .git && \
-    pip install --no-cache-dir "paddlex[base]" .
+    pip install --no-cache-dir -e ".[base]"
 
 COPY bash.bashrc /etc/bash.bashrc
 
