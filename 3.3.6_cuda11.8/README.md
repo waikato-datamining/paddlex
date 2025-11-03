@@ -1,8 +1,8 @@
-# PaddleSeg
+# PaddleX
 
-Uses [PaddleSeg](https://github.com/PaddlePaddle/PaddleSeg) ([documentation](https://github.com/PaddlePaddle/PaddleSeg/blob/release/2.10/README_EN.md)). 
+Uses [PaddleX](https://github.com/PaddlePaddle/PaddleX) ([documentation](https://paddlepaddle.github.io/PaddleX/3.3/en/index.html)). 
 
-Uses CUDA 11.8 and PaddleSeg 2.10.0.
+Uses CUDA 11.8 and PaddleX 3.3.6.
 
 ## Quick start
 
@@ -19,7 +19,7 @@ Uses CUDA 11.8 and PaddleSeg 2.10.0.
   ```bash
   docker run --gpus=all --shm-size 8G --net=host \
     -v /local/dir:/container/dir \
-    -it public.aml-repo.cms.waikato.ac.nz:443/paddle/paddleseg:2.10.0-3_cuda11.8
+    -it public.aml-repo.cms.waikato.ac.nz:443/paddle/paddlex:3.3.6_cuda11.8
   ```
 
 ### Docker hub
@@ -29,21 +29,21 @@ Uses CUDA 11.8 and PaddleSeg 2.10.0.
   ```bash
   docker run --gpus=all --shm-size 8G --net=host \
     -v /local/dir:/container/dir \
-    -it waikatodatamining/paddleseg:2.10.0-3_cuda11.8
+    -it waikatodatamining/paddlex:3.3.6_cuda11.8
   ```
 
 ### Build local image
 
-* Build the image from Docker file (from within /path_to/paddleseg/2.10.0-3_cuda11.8)
+* Build the image from Docker file (from within /path_to/paddlex/3.3.6_cuda11.8)
 
   ```bash
-  docker build -t paddleseg .
+  docker build -t paddlex .
   ```
   
 * Run the container
 
   ```bash
-  docker run --gpus=all --shm-size 8G --net=host -v /local/dir:/container/dir -it paddleseg
+  docker run --gpus=all --shm-size 8G --net=host -v /local/dir:/container/dir -it paddlex
   ```
   `/local/dir:/container/dir` maps a local disk directory into a directory inside the container
 
@@ -53,7 +53,7 @@ Uses CUDA 11.8 and PaddleSeg 2.10.0.
 ### Build
 
 ```bash
-docker build -t paddleseg:2.10.0-3_cuda11.8 .
+docker build -t paddlex:3.3.6_cuda11.8 .
 ```
 
 ### Inhouse registry  
@@ -62,14 +62,14 @@ docker build -t paddleseg:2.10.0-3_cuda11.8 .
 
   ```bash
   docker tag \
-    paddleseg:2.10.0-3_cuda11.8 \
-    public-push.aml-repo.cms.waikato.ac.nz:443/paddle/paddleseg:2.10.0-3_cuda11.8
+    paddlex:3.3.6_cuda11.8 \
+    public-push.aml-repo.cms.waikato.ac.nz:443/paddle/paddlex:3.3.6_cuda11.8
   ```
   
 * Push
 
   ```bash
-  docker push public-push.aml-repo.cms.waikato.ac.nz:443/paddle/paddleseg:2.10.0-3_cuda11.8
+  docker push public-push.aml-repo.cms.waikato.ac.nz:443/paddle/paddlex:3.3.6_cuda11.8
   ```
   If error "no basic auth credentials" occurs, then run (enter username/password when prompted):
   
@@ -83,14 +83,14 @@ docker build -t paddleseg:2.10.0-3_cuda11.8 .
 
   ```bash
   docker tag \
-    paddleseg:2.10.0-3_cuda11.8 \
-    waikatodatamining/paddleseg:2.10.0-3_cuda11.8
+    paddlex:3.3.6_cuda11.8 \
+    waikatodatamining/paddlex:3.3.6_cuda11.8
   ```
   
 * Push
 
   ```bash
-  docker push waikatodatamining/paddleseg:2.10.0-3_cuda11.8
+  docker push waikatodatamining/paddlex:3.3.6_cuda11.8
   ```
   If error "no basic auth credentials" occurs, then run (enter username/password when prompted):
   
@@ -103,7 +103,7 @@ docker build -t paddleseg:2.10.0-3_cuda11.8 .
 
 ```bash
 docker run --rm --pull=always \
-  -it public.aml-repo.cms.waikato.ac.nz:443/paddle/paddleseg:2.10.0-3_cuda11.8 \
+  -it public.aml-repo.cms.waikato.ac.nz:443/paddle/paddlex:3.3.6_cuda11.8 \
   pip freeze > requirements.txt
 ```
 
@@ -128,7 +128,7 @@ to download them constantly, you can the cache directory to the host machine:
 * when running the container as current user
 
   ```bash
-  -v /some/where/cache:/.paddleseg \
+  -v /some/where/cache:/.paddlex \
   ```
 
 
@@ -136,17 +136,6 @@ to download them constantly, you can the cache directory to the host machine:
 
 The following additional scripts are available:
 
-* `paddleseg_export_config` - for exporting template config files and setting parameters (calls the `/opt/PaddleSeg/tools/export_config.py` script)
-* `paddleseg_train` - for training models (calls the `/opt/PaddleSeg/tools/train.py` script)
-* `paddleseg_export` - for exporting models (calls the `/opt/PaddleSeg/tools/export.py` script)
-* `paddleseg_val` - for evaluating models (calls the `/opt/PaddleSeg/tools/val.py` script)
-* `paddleseg_predict` - for generating predictions of supplied files (calls the `/opt/PaddleSeg/tools/predict.py` script)
-* `paddleseg_predict_poll` - for generating predictions of supplied files in batch/poll mode (calls the `/opt/PaddleSeg/tools/predict_poll.py` script)
-* `paddleseg_predict_redis` - for generating predictions via Redis (calls the `/opt/PaddleSeg/tools/predict_redis.py` script)
+* `TODO` - ...
 
 
-## Troubleshooting
-
-* Blanks in image names causes *ValueError: File list format incorrect! In training or evaluation task it should be image_name label_name*
-
-  **Solution:** Use `;` as separator when generating the dataset and then add parameter `separator: ;` below `train_dataset:` and `val_dataset:` sections
